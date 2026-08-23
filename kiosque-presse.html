@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiosque de presse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3f0e9;
+    --ink:#1c1b19;
+    --ink-soft:#5b5850;
+    --rule:#d8d3c5;
+    --mediapart:#e0261b;
+    --asi:#1f6fa6;
+    --europresse:#c96a1c;
+    --pressreader:#2f8f4e;
+    --card-bg:#ffffff;
+    --focus:#1c1b19;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  header{
+    padding: 2.2rem 1.25rem 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    text-align:center;
+  }
+
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin:0 0 0.5rem;
+  }
+
+  h1{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:700;
+    font-size:clamp(1.8rem, 6vw, 2.6rem);
+    margin:0 0 0.5rem;
+    letter-spacing:-0.01em;
+  }
+
+  .sub{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    max-width:32rem;
+    margin:0 auto;
+    line-height:1.5;
+  }
+
+  main{
+    max-width:56rem;
+    margin:0 auto;
+    padding: 1.5rem 1.1rem 3rem;
+  }
+
+  .kiosque{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:1rem;
+  }
+
+  @media (min-width: 620px){
+    .kiosque{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 900px){
+    .kiosque{ grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .titre-card{
+    --accent: var(--ink);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:9.5rem;
+    background:var(--card-bg);
+    border:1px solid var(--rule);
+    border-top:4px solid var(--accent);
+    padding:1.25rem 1.25rem 1rem;
+    text-decoration:none;
+    color:var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+
+  .titre-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -12px rgba(28,27,25,0.28);
+  }
+
+  .titre-card:focus-visible{
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  .titre-card .nom{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:700;
+    font-size:1.5rem;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+
+  .titre-card .baseline{
+    font-size:0.75rem;
+    color:var(--ink-soft);
+    margin-top:0.35rem;
+  }
+
+  .titre-card .action{
+    margin-top:1rem;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+
+  .titre-card .action svg{
+    width:0.85rem;
+    height:0.85rem;
+    transition: transform 0.15s ease;
+  }
+
+  .titre-card:hover .action svg{
+    transform: translate(2px,-2px);
+  }
+
+  .mediapart{ --accent: var(--mediapart); }
+  .asi{ --accent: var(--asi); }
+  .europresse{ --accent: var(--europresse); }
+  .pressreader{ --accent: var(--pressreader); }
+
+  footer{
+    text-align:center;
+    padding: 0 1.25rem 2.5rem;
+    font-size:0.75rem;
+    color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Accès distant &middot; via le portail de la bibliothèque</p>
+  <h1>Kiosque de presse</h1>
+  <p class="sub">Cliquez sur un titre pour accéder à la ressource. La connexion s'effectue via votre compte de bibliothèque.</p>
+</header>
+
+<main>
+  <div class="kiosque">
+
+    <a class="titre-card mediapart" href="https://bnf.idm.oclc.org/login?url=https://www.mediapart.fr/licence" target="_blank" rel="noopener">
+      <div>
+        <div class="nom">Mediapart</div>
+        <div class="baseline">Journal d'investigation en ligne</div>
+      </div>
+      <span class="action">
+        Accéder
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </span>
+    </a>
+
+    <a class="titre-card asi" href="https://bnf.idm.oclc.org/login?url=http://www.arretsurimages.net/autologin.php" target="_blank" rel="noopener">
+      <div>
+        <div class="nom">Arrêt sur images</div>
+        <div class="baseline">Analyse des médias</div>
+      </div>
+      <span class="action">
+        Accéder
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </span>
+    </a>
+
+    <a class="titre-card europresse" href="https://bnf.idm.oclc.org/login?url=https://nouveau.europresse.com/access/ip/default.aspx?un=D000067U_1" target="_blank" rel="noopener">
+      <div>
+        <div class="nom">Europresse</div>
+        <div class="baseline">Base de presse internationale</div>
+      </div>
+      <span class="action">
+        Accéder
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </span>
+    </a>
+
+    <a class="titre-card pressreader" href="https://bnf.idm.oclc.org/login?url=https://www.pressreader.com/" target="_blank" rel="noopener">
+      <div>
+        <div class="nom">PressReader</div>
+        <div class="baseline">Journaux et magazines du monde</div>
+      </div>
+      <span class="action">
+        Accéder
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </span>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  Un nouvel onglet s'ouvre à chaque accès.
+</footer>
+
+</body>
+</html>
